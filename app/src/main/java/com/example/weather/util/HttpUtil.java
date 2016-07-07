@@ -12,7 +12,7 @@ import java.net.URL;
  */
 public class HttpUtil {
 
-    private static void sendRequest(final String address,
+    public static void sendRequest(final String address,
                                     final HttpCallbackListener listener){
         new Thread(new Runnable() {
             @Override
@@ -32,12 +32,12 @@ public class HttpUtil {
                         response.append(line);
                     }
                     if (listener != null){
-                        listener.onFinish();
+                        listener.onFinish(response.toString());
                     }
                 }catch (Exception e){
                     e.printStackTrace();
                     if (listener != null){
-                        listener.onError();
+                        listener.onError(e);
                     }
                 }finally {
                     if (connection != null){

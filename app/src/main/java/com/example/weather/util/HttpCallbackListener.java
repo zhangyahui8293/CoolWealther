@@ -5,6 +5,6 @@ package com.example.weather.util;
  */
 public interface HttpCallbackListener {
 
-    void onFinish();
-    void onError();
+    void onFinish(String response);
+    void onError(Exception e);
 }
